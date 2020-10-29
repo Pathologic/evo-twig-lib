@@ -5,20 +5,24 @@ namespace Pathologic\EvoTwig;
 class Plugin {
     protected $modx;
     protected $params;
+    protected $addonsPath = 'assets/plugins/evotwig/addons/';
 
     public function __construct(DocumentParser $modx, $params = [])
     {
-	$this->modx = $modx;
-	$this->params = $params;
+        $this->modx = $modx;
+        $this->params = $params;
     }
 
-    protected function loadAddons()
+    protected function loadAddons($type)
     {
-	$twig = $this->modx->twig;
+        $modx = $this->modx;
+	    $twig = $this->modx->twig;
+	    $path = $this->addonsPath . $type . '/';
+
     }
 
-    protected function getTemplate()
+    public function OnBeforeSaveWebPageCache()
     {
-	
+
     }
 }
