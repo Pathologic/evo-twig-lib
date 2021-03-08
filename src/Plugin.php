@@ -126,6 +126,9 @@ class Plugin
         $this->loadAddons('extensions');
         $this->loadAddons('functions');
         $this->loadAddons('filters');
+        $this->modx->tpl->loadTwig();
+        $this->modx->tpl->setTemplatePath($this->params['templatesPath']);
+        $this->modx->tpl->setTemplateExtension($this->params['templatesExtension']);
     }
 
     public function initDLTemplate() {
@@ -135,11 +138,11 @@ class Plugin
     public function OnLoadWebDocument()
     {
         if ($this->params['disableTwig'] === true) return;
-        $this->modx->minParserPasses = -1;
-        $this->modx->maxParserPasses = -1;
         $template = $this->modx->documentObject['template'] ? $this->modx->documentContent : $this->modx->documentObject['content'];
         $template = $template ?: $this->modx->documentObject['content'];
         if (strpos($template, '@FILE:') === 0) {
+            $this->modx->minParserPasses = -1;
+            $this->modx->maxParserPasses = -1;
             $template = substr($template, 6);
             $template = explode('@', $template, 2);
             if (!empty($template[1])) {

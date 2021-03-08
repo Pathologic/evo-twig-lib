@@ -24,7 +24,6 @@ class BaseController implements ControllerInterface
             'placeholders'   => &$modx->placeholders,
             '_SESSION'       => &$_SESSION,
         ]);
-        $this->modx->tpl->setTemplateData($this->getTemplateData());
     }
 
     /**
