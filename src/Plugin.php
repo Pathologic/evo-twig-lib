@@ -30,7 +30,7 @@ class Plugin
         $params['templatesPath'] = $params['templatesPath'] ?? 'assets/templates/tpl/';
         $params['templatesExtension'] = $params['templatesExtension'] ?? 'tpl';
         $params['templatesCachePath'] = $params['templatesCachePath'] ?? 'assets/cache/templates/';
-        $params['controllerNamespace'] = $params['controllerNamespace'] ?? __NAMESPACE__;
+        $params['controllersNamespace'] = $params['controllersNamespace'] ?? __NAMESPACE__;
         $params['dataCachePath'] = $params['dataCachePath'] ?? 'assets/cache/data/';
         $params['allowedFunctions'] = $params['allowedFunctions'] ?? '';
         $params['allowedFilters'] = $params['allowedFilters'] ?? '';
@@ -146,7 +146,7 @@ class Plugin
             $template = substr($template, 6);
             $template = explode('@', $template, 2);
             if (!empty($template[1])) {
-                $controller = $this->params['controllerNamespace'] . '\\' . $template[1];
+                $controller = $this->params['controllersNamespace'] . '\\' . $template[1];
             }
             $template = $template[0];
             if (empty($controller) || !class_exists($controller) || !is_a($controller, 'Pathologic\EvoTwig\ControllerInterface', true)) {
