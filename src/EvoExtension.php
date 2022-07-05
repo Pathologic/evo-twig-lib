@@ -36,21 +36,25 @@ class EvoExtension extends AbstractExtension implements GlobalsInterface
                     $this->modx = $modx;
                 }
 
-                public function offsetExists($offset): bool
+                #[\ReturnTypeWillChange]
+                public function offsetExists($offset)
                 {
                     return isset($this->modx->placeholders[$offset]);
                 }
 
-                public function offsetGet($offset): ?string
+                #[\ReturnTypeWillChange]
+                public function offsetGet($offset)
                 {
                     return $this->modx->getPlaceholder($offset);
                 }
 
-                public function offsetSet($offset, $value): void
+                #[\ReturnTypeWillChange]
+                public function offsetSet($offset, $value)
                 {
                 }
 
-                public function offsetUnset($offset): void
+                #[\ReturnTypeWillChange]
+                public function offsetUnset($offset)
                 {
                 }
 
@@ -64,21 +68,25 @@ class EvoExtension extends AbstractExtension implements GlobalsInterface
             '_REQUEST'       => $_REQUEST,
             '_COOKIE'        => $_COOKIE,
             '_SESSION'       => new class implements \ArrayAccess {
-                public function offsetExists($offset): bool
+                #[\ReturnTypeWillChange]
+                public function offsetExists($offset)
                 {
                     return isset($_SESSION[$offset]);
                 }
 
-                public function offsetGet($offset): mixed
+                #[\ReturnTypeWillChange]
+                public function offsetGet($offset)
                 {
                     return $_SESSION[$offset] ?? null;
                 }
 
-                public function offsetSet($offset, $value): void
+                #[\ReturnTypeWillChange]
+                public function offsetSet($offset, $value)
                 {
                 }
 
-                public function offsetUnset($offset): void
+                #[\ReturnTypeWillChange]
+                public function offsetUnset($offset)
                 {
                 }
 
