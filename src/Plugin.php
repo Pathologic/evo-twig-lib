@@ -60,17 +60,7 @@ class Plugin
         return $params;
     }
 
-    public function OnManagerPageInit()
-    {
-        $this->init();
-    }
-
-    public function OnWebPageInit()
-    {
-        $this->init();
-    }
-
-    public function OnPageNotFound()
+    public function OnLoadSettings()
     {
         $this->init();
     }
